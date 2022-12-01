@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition xmlns="http://workflow.opencastproject.org">
+
+    <id>smp-ingest-validation-example</id>
+    <title>Ingest with Validation</title>
+    <tags/>
+    <description/>
+
+    <configuration_panel></configuration_panel>
+
+    <operations>
+        <operation
+            id="smp351metadatavalidator"
+            description="Validate the proprietary SMP 351 catalog's metadata.">
+            <configurations>
+                <!-- validate 7 of 15 fields -->
+                <configuration key="dc:creator">.+</configuration> <!-- match 1 or more chars -->
+                <configuration key="dc:date">.+</configuration>
+                <configuration key="dc:identifier">.+</configuration>
+                <configuration key="dc:relation">.+</configuration>
+                <configuration key="dc:source">.+</configuration>
+                <configuration key="dc:subject">.+</configuration>
+                <configuration key="dc:title">.+</configuration>
+            </configurations>
+        </operation>
+    </operations>
+
+</definition>

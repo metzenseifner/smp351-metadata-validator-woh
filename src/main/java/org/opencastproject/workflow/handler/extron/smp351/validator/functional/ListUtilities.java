@@ -36,6 +36,14 @@ public final class ListUtilities {
     });
   }
 
+  public static <A> List<A> filter(List<A> list, Function<A, Boolean> predicate) {
+    List<A> result = new LinkedList<>();
+    for (A elem : list) {
+      if (predicate.apply(elem)) result.add(elem);
+    }
+    return result;
+  }
+
   public static <A,B> List<Result<B>> map(List<A> list, Function<A, B> f) {
       List<Result<B>> bs = new LinkedList<>();
       for (A a : list) {

@@ -39,9 +39,18 @@ public class Utilities {
     return Result.of(workflowInstance.getCurrentOperation());
   }
 
-  public static Result<String> safeGetConfigurationFor(WorkflowOperationInstance op, String key) {
+  /**
+   *
+   * @param op
+   * @param key
+   * @return cases:
+   *  1. Success if a key is found
+   *  2. Failure if a key is not found ({@link org.opencastproject.workflow.api.Configurable#getConfiguration(String)})
+   *  3. Failure for access to configuration class or other
+   */
+  public static Result<Tuple<String, String>> safeGetConfigurationFor(WorkflowOperationInstance op, String key) {
     try {
-      return Result.of(op.getConfiguration(key),
+      return Result.of(new Tuple<>(key, op.getConfiguration(key)),
               String.format("%s does not contain setting for key: %s", op, key));
     } catch (Exception e) {
       return Result.failure(e);
@@ -60,7 +69,7 @@ public class Utilities {
   }
 
   public static Result<URI> getURI(Catalog catalog) {
-    Result<Catalog> rCatalog = Result.of(catalog, "Catalog must not be null.!");
+    Result<Catalog> rCatalog = Result.of(catalog, "Catalog must not be null!");
     return rCatalog.flatMap(c -> {
       try {
         return Result.success(c.getURI());

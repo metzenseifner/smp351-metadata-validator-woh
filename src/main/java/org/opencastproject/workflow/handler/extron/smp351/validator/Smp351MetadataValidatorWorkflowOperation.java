@@ -1,19 +1,15 @@
 package org.opencastproject.workflow.handler.extron.smp351.validator;
 
 import org.opencastproject.job.api.JobContext;
-import org.opencastproject.mediapackage.Catalog;
-import org.opencastproject.mediapackage.MediaPackage;
 import org.opencastproject.workflow.api.AbstractWorkflowOperationHandler;
 import org.opencastproject.workflow.api.WorkflowInstance;
 import org.opencastproject.workflow.api.WorkflowOperationException;
 import org.opencastproject.workflow.api.WorkflowOperationInstance;
 import org.opencastproject.workflow.api.WorkflowOperationResult;
-import org.opencastproject.workflow.handler.extron.smp351.validator.functional.GsonJsonReader;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Result;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Tuple;
-import org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities;
 import org.opencastproject.workspace.api.Workspace;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
@@ -27,9 +23,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities.assertPatternMatches;
-import static org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities.resolveConfiguration;
 import static org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities.workspaceToURIToInputStream;
 
 /**
@@ -64,10 +60,34 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
     @Override
     public WorkflowOperationResult start(final WorkflowInstance workflowInstance,
                                          final JobContext context) throws WorkflowOperationException {
+      final WorkflowOperationInstance operation = workflowInstance.getCurrentOperation();
 
-        Smp351MetadataValidatorService service = Smp351MetadataValidatorService.create(workflowInstance, workSpace, )
-        
-        // Imperative Shell
+      /* Provide Configuration Proxy */
+      Smp351MetadataValidatorConfiguration conf = new Smp351MetadataValidatorConfiguration(operation);
+
+      /* Service */
+      Smp351MetadataValidatorService service = Smp351MetadataValidatorService.create(workflowInstance, workSpace, conf);
+
+      /* Produce list of values for each key provided in the workflow */
+      List<Result<Tuple<String, String>>> values = operation.getConfigurationKeys().stream().map(k -> conf.getSetting(k)).collect(Collectors.toList());
+
+      /* Isolate values of known keys */
+      List<Result<Tuple<String, String>>> knownSettings = ListUtilities.filter(values, v -> v.isSuccess());
+
+      /* Isolate unknown keys for logging */
+      List<Result<Tuple<String, String>>> unknownSettings = ListUtilities.filter(values, v -> v.isEmpty());
+
+      /* Isolate errors for logging */
+      List<Result<Tuple<String, String>>> errorSettings = ListUtilities.filter(values, v -> v.isFailure());
+
+      /* Produce (key,values) pairs from SMP */
+      List<Tuple<String, String>> metadata = service.getMetadata();
+
+      /* Find all matches in metadata that have settings */
+      // TODO
+
+      /* Compare settings to
+
 
         // Log the keys that will be validated using a pattern
         rResolvedConfigToPatterns.map(m ->  new Tuple<Map<ConfKey, Result<Pattern>>, List<ConfKey>>(m, m.keys()))

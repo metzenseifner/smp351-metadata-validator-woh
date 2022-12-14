@@ -3,11 +3,4 @@ import org.opencastproject.workflow.handler.extron.smp351.validator.Smp351Metada
 
 public class Smp351MetadataValidatorServiceTest {
 
-    private Smp351MetadataValidatorService service = Smp351MetadataValidatorService.create();
-
-
-    @Test
-    public void TestE
-
-
 }

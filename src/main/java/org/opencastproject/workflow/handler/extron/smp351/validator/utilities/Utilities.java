@@ -7,6 +7,7 @@ import org.opencastproject.workflow.api.WorkflowInstance;
 import org.opencastproject.workflow.api.WorkflowOperationInstance;
 import org.opencastproject.workflow.handler.extron.smp351.validator.ConfKey;
 import org.opencastproject.workflow.handler.extron.smp351.validator.Smp351MetadataValidatorConfiguration;
+import org.opencastproject.workflow.handler.extron.smp351.validator.ValidationUnit;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.GsonJsonReader;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
@@ -95,8 +96,8 @@ public class Utilities {
    * @param smp351MetadataFieldKeys
    * @return
    */
-  public static Map<ConfKey, Result<String>> readSmp351Catalog(GsonJsonReader reader, List<ConfKey> smp351MetadataFieldKeys) {
-    return ListUtilities.foldLeft(smp351MetadataFieldKeys, new Map(), map -> k -> map.put(k, readSmp351ProprietaryMetadataField(reader, k.key)));
+  public static Map<String, Result<String>> readSmp351Catalog(GsonJsonReader reader, List<String> smp351MetadataFieldKeys) {
+    return ListUtilities.foldLeft(smp351MetadataFieldKeys, new Map(), map -> k -> map.put(k, readSmp351ProprietaryMetadataField(reader, k)));
   }
 
   /**
@@ -124,16 +125,16 @@ public class Utilities {
   //          acc -> ckey -> acc.put(ckey, rConfig.flatMap(conf -> conf.getSetting(ckey).map(str -> Pattern.compile(str)))));
   //}
   /* list-based impl */
-  public static List<Tuple<ConfKey, Result<Pattern>>> resolveConfiguration(List<ConfKey> keys, Smp351MetadataValidatorConfiguration configuration) {
-    Result<Smp351MetadataValidatorConfiguration> rConfig = Result.of(configuration);
-    return ListUtilities.foldLeft(
-            Smp351MetadataValidatorConfiguration.confKeys,
-            ListUtilities.list(),
-            acc -> ckey -> ListUtilities acc.add(new Tuple<>(ckey, rConfig.flatMap(conf -> conf.getSetting(ckey).map(str -> Pattern.compile(str))))));
-  }
+  //public static List<Tuple<ConfKey, Result<Pattern>>> resolveConfiguration(List<ConfKey> keys, Smp351MetadataValidatorConfiguration configuration) {
+  //  Result<Smp351MetadataValidatorConfiguration> rConfig = Result.of(configuration);
+  //  return ListUtilities.foldLeft(
+  //          Smp351MetadataValidatorConfiguration.confKeys,
+  //          ListUtilities.list(),
+  //          acc -> ckey -> ListUtilities acc.add(new Tuple<>(ckey, rConfig.flatMap(conf -> conf.getSetting(ckey).map(str -> Pattern.compile(str))))));
+  //}
 
-  public static Result<String> assertPatternMatches(Pattern pattern, String value) {
-    return assertCondition(value, p -> Pattern.matches(p, value), String.format("Pattern \"%s\" failed to match value: %s", pattern.toString(), value));
+  public static <T> Result<T> assertPatternMatches(String pattern, T value, Function<T, String> resolveString) {
+    return assertCondition(value, p -> Pattern.matches(pattern, resolveString.apply(value)), String.format("Pattern \"%s\" failed to match value: %s", pattern.toString(), value));
   }
 
   public static <T> Result<T> assertCondition(T value, Function<T, Boolean> f, String errMessage) {

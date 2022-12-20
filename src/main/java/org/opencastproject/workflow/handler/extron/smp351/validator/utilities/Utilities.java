@@ -5,9 +5,6 @@ import org.opencastproject.mediapackage.MediaPackage;
 import org.opencastproject.mediapackage.MediaPackageElementFlavor;
 import org.opencastproject.workflow.api.WorkflowInstance;
 import org.opencastproject.workflow.api.WorkflowOperationInstance;
-import org.opencastproject.workflow.handler.extron.smp351.validator.ConfKey;
-import org.opencastproject.workflow.handler.extron.smp351.validator.Smp351MetadataValidatorConfiguration;
-import org.opencastproject.workflow.handler.extron.smp351.validator.ValidationUnit;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.GsonJsonReader;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
@@ -19,12 +16,9 @@ import java.io.InputStream;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Utilities {
 

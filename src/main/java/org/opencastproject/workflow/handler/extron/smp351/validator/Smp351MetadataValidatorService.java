@@ -71,7 +71,26 @@ public class Smp351MetadataValidatorService {
       .flatMap(Utilities::getURI)
       .flatMap(URIToInputStream)
       .map(in -> GsonJsonReader.streamJsonReader(in))
-      .map(jReader -> Utilities.readSmp351Catalog(jReader, Smp351MetadataValidatorConfiguration.confKeys));
+      .map(jReader -> Utilities.readSmp351Catalog(jReader,
+        //TODO Replace me with code that ensure changes propogate
+        ListUtilities.list(
+          Smp351MetadataValidatorOperationConfig.CONTRIBUTOR,
+          Smp351MetadataValidatorOperationConfig.COURSE,
+          Smp351MetadataValidatorOperationConfig.COVERAGE,
+          Smp351MetadataValidatorOperationConfig.CREATOR,
+          Smp351MetadataValidatorOperationConfig.DATE,
+          Smp351MetadataValidatorOperationConfig.DESCRIPTION,
+          Smp351MetadataValidatorOperationConfig.FORMAT,
+          Smp351MetadataValidatorOperationConfig.IDENTIFIER,
+          Smp351MetadataValidatorOperationConfig.LANGUAGE,
+          Smp351MetadataValidatorOperationConfig.PUBLISHER,
+          Smp351MetadataValidatorOperationConfig.RELATION,
+          Smp351MetadataValidatorOperationConfig.RIGHTS,
+          Smp351MetadataValidatorOperationConfig.SOURCE,
+          Smp351MetadataValidatorOperationConfig.SUBJECT,
+          Smp351MetadataValidatorOperationConfig.TITLE,
+          Smp351MetadataValidatorOperationConfig.TYPE
+          )));
 
     /* At this point, rule out any potential catalog errors and ensure all keys have values in map to flatten Result */
     // TODO Clean up code

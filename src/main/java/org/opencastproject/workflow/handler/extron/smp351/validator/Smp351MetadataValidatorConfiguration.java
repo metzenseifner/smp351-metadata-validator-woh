@@ -8,6 +8,11 @@ import org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Ut
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TODO: Retire this class. Prefer {@link Smp351MetadataValidatorOperationConfig}.
+ *
+ * Provides iterable SMP 351 configuration keys.
+ */
 public final class Smp351MetadataValidatorConfiguration {
 
   // TODO: Add support for conf files private final Map<String, String> confFileProperties;

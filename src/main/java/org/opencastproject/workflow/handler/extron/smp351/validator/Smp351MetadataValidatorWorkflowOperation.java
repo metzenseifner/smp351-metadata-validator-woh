@@ -1,11 +1,7 @@
 package org.opencastproject.workflow.handler.extron.smp351.validator;
 
 import org.opencastproject.job.api.JobContext;
-import org.opencastproject.workflow.api.AbstractWorkflowOperationHandler;
-import org.opencastproject.workflow.api.WorkflowInstance;
-import org.opencastproject.workflow.api.WorkflowOperationException;
-import org.opencastproject.workflow.api.WorkflowOperationInstance;
-import org.opencastproject.workflow.api.WorkflowOperationResult;
+import org.opencastproject.workflow.api.*;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Result;
@@ -16,17 +12,8 @@ import org.osgi.service.component.annotations.Modified;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.InputStream;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import static org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities.assertPatternMatches;
-import static org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities.workspaceToURIToInputStream;
 
 /**
  * Validates the proprietary SMP 351 JSON file metadata fields.
@@ -49,7 +36,7 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
 
   private static final Logger logger = LoggerFactory.getLogger(Smp351MetadataValidatorWorkflowOperation.class);
   private Map<String, String> confFileProperties;
-  private Workspace workSpace;
+  private Workspace workspace;
 
   @Modified
   public void updated(Map<String, String> declarativeServicesProperties) {
@@ -65,7 +52,7 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
     Smp351MetadataValidatorConfiguration conf = new Smp351MetadataValidatorConfiguration(operation);
 
     /* Service */
-    Smp351MetadataValidatorService service = Smp351MetadataValidatorService.create(workflowInstance, workSpace);
+    Smp351MetadataValidatorService service = Smp351MetadataValidatorService.create(workflowInstance, workspace);
 
     /* Produce list of values for each key provided in the workflow */
     List<Result<Tuple<String, String>>> values = operation.getConfigurationKeys().stream().map(k -> conf.getSetting(k)).collect(Collectors.toList());
@@ -92,13 +79,38 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
 
     /* Failed set */
     List<Result<ValidationUnit>> failures = validationResults.stream().filter(result -> result.isFailure()).collect(Collectors.toUnmodifiableList());
-    List<Result<ValidationUnit>> successes = validationResults.stream().filter(result -> result.isSuccess()).collect(Collectors.toUnmodifiableList());
+
+    /* Success set */
+    //List<Result<ValidationUnit>> successes = validationResults.stream().filter(result -> result.isSuccess()).collect(Collectors.toUnmodifiableList());
+
+    /* Log cases */
+    validationResults.stream().map(Smp351MetadataValidatorWorkflowOperation::validationUnitToLogMessage).forEach(msg -> logger.info(msg));
 
     /* Fail workflow if not all results are successes */
     if (!failures.isEmpty()) {
       operation.setState(WorkflowOperationInstance.OperationState.FAILED);
+      throw new WorkflowOperationException("Validation of SMP351 proprietary metadata fields failed.");
     }
     operation.setState(WorkflowOperationInstance.OperationState.SUCCEEDED);
     return createResult(WorkflowOperationResult.Action.CONTINUE);
+  }
+
+  /**
+   * Sets the workspace to use.
+   *
+   * @param workspace
+   *          the workspace
+   */
+  public void setWorkspace(Workspace workspace) {
+    this.workspace = workspace;
+  }
+
+  public static String validationUnitToLogMessage(final Result<ValidationUnit> rValidationUnit) {
+    final String SUCCESS_FORMATTER = "Successfully validated value of (key, %s) using (regex, %s): (value, %s)";
+    if (rValidationUnit.isSuccess()) {
+      ValidationUnit unit = rValidationUnit.successValue();
+      return String.format(SUCCESS_FORMATTER, unit.key, unit.regex, unit.value);
+    }
+    return rValidationUnit.failureValue().getMessage();
   }
 }

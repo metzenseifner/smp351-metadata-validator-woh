@@ -1,0 +1,391 @@
+<mediapackage duration="6087701" id="a163d07d-3241-42b9-831b-ddbb6a092f2b" start="2022-12-16T07:16:37Z">
+  <title>2022-12-16 - VO Lustige Stukturen</title>
+  <series>514311</series>
+  <seriestitle>123456-0 2022W VO Lustige Stukturen</seriestitle>
+  <creators>
+    <creator>Mr. Test Author</creator>
+  </creators>
+  <subjects>
+    <subject>123456-0 2022W VO Lustige Stukturen</subject>
+  </subjects>
+  <media>
+    <track id="d63f2aae-8242-4f7c-8d5b-1bc84039d0db" type="presentation/source">
+      <mimetype>video/mp4</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/d63f2aae-8242-4f7c-8d5b-1bc84039d0db/3/Technik_HSD_B_20221216_081637_S1R1.mp4
+      </url>
+      <size>803857830</size>
+      <checksum type="md5">a4953126f083ed6c59f9ad6dd082a496</checksum>
+      <duration>6087637</duration>
+      <audio id="audio-1">
+        <device/>
+        <encoder type="AAC (Advanced Audio Coding)"/>
+        <framecount>285358</framecount>
+        <channels>2</channels>
+        <samplingrate>48000</samplingrate>
+        <bitrate>189375.0</bitrate>
+      </audio>
+      <video id="video-1">
+        <device/>
+        <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+        <framecount>182629</framecount>
+        <bitrate>851449.0</bitrate>
+        <framerate>30.0</framerate>
+        <resolution>1280x720</resolution>
+      </video>
+      <live>false</live>
+      <master>false</master>
+    </track>
+    <track id="ac48d425-698d-4f88-a700-8a08435d2209" type="presenter/source">
+      <mimetype>video/mp4</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/ac48d425-698d-4f88-a700-8a08435d2209/3/Technik_HSD_A_20221216_081637_S1R1.mp4
+      </url>
+      <size>3959568943</size>
+      <checksum type="md5">0d177edd3421c781bf79727247943dfa</checksum>
+      <duration>6087701</duration>
+      <audio id="audio-1">
+        <device/>
+        <encoder type="AAC (Advanced Audio Coding)"/>
+        <framecount>285361</framecount>
+        <channels>2</channels>
+        <samplingrate>48000</samplingrate>
+        <bitrate>189375.0</bitrate>
+      </audio>
+      <video id="video-1">
+        <device/>
+        <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+        <framecount>182626</framecount>
+        <bitrate>4998807.0</bitrate>
+        <framerate>29.999178</framerate>
+        <resolution>1280x720</resolution>
+      </video>
+      <live>false</live>
+      <master>false</master>
+    </track>
+    <track id="e008225d-8b24-49d9-aa90-1b3691736c4f" type="presenter/prepared">
+      <mimetype>video/mp4</mimetype>
+      <tags>
+        <tag>archive</tag>
+        <tag>editor</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/e008225d-8b24-49d9-aa90-1b3691736c4f/3/Technik_HSD_A_20221216_081637_S1R1.mp4
+      </url>
+      <size>3959568943</size>
+      <checksum type="md5">0d177edd3421c781bf79727247943dfa</checksum>
+      <duration>6087701</duration>
+      <audio id="audio-1">
+        <device/>
+        <encoder type="AAC (Advanced Audio Coding)"/>
+        <framecount>285361</framecount>
+        <channels>2</channels>
+        <samplingrate>48000</samplingrate>
+        <bitrate>189375.0</bitrate>
+      </audio>
+      <video id="video-1">
+        <device/>
+        <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+        <framecount>182626</framecount>
+        <bitrate>4998807.0</bitrate>
+        <framerate>29.999178</framerate>
+        <resolution>1280x720</resolution>
+      </video>
+      <live>false</live>
+      <master>false</master>
+    </track>
+    <track id="1fdecc5a-e4f1-472e-9fac-e63364112dfa" type="presentation/prepared">
+      <mimetype>video/mp4</mimetype>
+      <tags>
+        <tag>archive</tag>
+        <tag>editor</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/1fdecc5a-e4f1-472e-9fac-e63364112dfa/3/Technik_HSD_B_20221216_081637_S1R1.mp4
+      </url>
+      <size>803857830</size>
+      <checksum type="md5">a4953126f083ed6c59f9ad6dd082a496</checksum>
+      <duration>6087637</duration>
+      <audio id="audio-1">
+        <device/>
+        <encoder type="AAC (Advanced Audio Coding)"/>
+        <framecount>285358</framecount>
+        <channels>2</channels>
+        <samplingrate>48000</samplingrate>
+        <bitrate>189375.0</bitrate>
+      </audio>
+      <video id="video-1">
+        <device/>
+        <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+        <framecount>182629</framecount>
+        <bitrate>851449.0</bitrate>
+        <framerate>30.0</framerate>
+        <resolution>1280x720</resolution>
+      </video>
+      <live>false</live>
+      <master>false</master>
+    </track>
+  </media>
+  <metadata>
+    <catalog id="1db0c286-7b42-44d4-9697-7e0b50afacb4" type="technical/extron-smp-351">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/1db0c286-7b42-44d4-9697-7e0b50afacb4/3/Technik_HSD_B_20221216_081637.xml
+      </url>
+      <checksum type="md5">5e3601c82d01d1dadfcab8f2cccb70a7</checksum>
+    </catalog>
+    <catalog id="a4891a81-118a-4c77-bb6a-909ba361a184" type="dublincore/episode">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+        <tag>engage-download</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/a4891a81-118a-4c77-bb6a-909ba361a184/3/dublincore.xml
+      </url>
+      <checksum type="md5">8b8896ddba68df603ba9d46b4157fb65</checksum>
+    </catalog>
+    <catalog id="52b384fc-fed7-407a-bbcb-3c4812f3a28a" type="dublincore/series">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+        <tag>engage-download</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/52b384fc-fed7-407a-bbcb-3c4812f3a28a/3/dublincore.xml
+      </url>
+      <checksum type="md5">d078eaec8d12d60d72201aef9d19dd9b</checksum>
+    </catalog>
+    <catalog id="s-5c5165c0-7401-4882-a86e-b55e501d2910" type="composite/silence">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/s-5c5165c0-7401-4882-a86e-b55e501d2910/3/smil.xml
+      </url>
+      <checksum type="md5">da729de8e30366eb0c278b2f49e27e29</checksum>
+    </catalog>
+  </metadata>
+  <attachments>
+    <attachment id="security-policy-episode" type="security/xacml+episode">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/security-policy-episode/3/xacml.xml
+      </url>
+      <checksum type="md5">6c23ba00fbca83432b9161d3f46e5144</checksum>
+    </attachment>
+    <attachment id="security-policy-series" type="security/xacml+series">
+      <mimetype>text/xml</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/security-policy-series/3/xacml.xml
+      </url>
+      <checksum type="md5">6c23ba00fbca83432b9161d3f46e5144</checksum>
+    </attachment>
+    <attachment id="4c14cfaf-cb80-42bc-942f-e79d758db591" type="presenter/player+preview">
+      <mimetype>image/png</mimetype>
+      <tags>
+        <tag>archive</tag>
+        <tag>engage-download</tag>
+      </tags>
+      <url>
+        https://opencast.admin.io/assets/assets/a163d07d-3241-42b9-831b-ddbb6a092f2b/4c14cfaf-cb80-42bc-942f-e79d758db591/3/coverimage.png
+      </url>
+      <checksum type="md5">db28d8500b8bb70e7f818a6bc43f7299</checksum>
+    </attachment>
+  </attachments>
+  <publications>
+    <publication id="35a46179-ae60-4636-867c-126070f616f9" channel="internal">
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        http://localhost:8080/admin-ng/index.html#/events/events/a163d07d-3241-42b9-831b-ddbb6a092f2b/tools/playback
+      </url>
+      <media>
+        <track id="3f69fe2f-c688-4184-b63b-eb74c35d6db6" type="composite/preview">
+          <mimetype>video/mp4</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/c507e090-0064-49f4-b056-1d18b3854536/composite.mp4
+          </url>
+          <size>238388935</size>
+          <checksum type="md5">9028f7b0f796f3433ad539f4aa6bb9bf</checksum>
+          <duration>6087702</duration>
+          <audio id="audio-1">
+            <device/>
+            <encoder type="AAC (Advanced Audio Coding)"/>
+            <framecount>131089</framecount>
+            <channels>2</channels>
+            <samplingrate>22050</samplingrate>
+            <bitrate>63986.0</bitrate>
+          </audio>
+          <video id="video-1">
+            <device/>
+            <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <framecount>182631</framecount>
+            <bitrate>244626.0</bitrate>
+            <framerate>30.0</framerate>
+            <resolution>1280x400</resolution>
+          </video>
+          <live>false</live>
+          <master>false</master>
+        </track>
+        <track id="a8515b87-724c-469b-bd45-745bb17346e5" type="presentation/prepared">
+          <mimetype>video/mp4</mimetype>
+          <tags>
+            <tag>archive</tag>
+            <tag>editor</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/1fdecc5a-e4f1-472e-9fac-e63364112dfa/Technik_HSD_B_20221216_081637_S1R1.mp4
+          </url>
+          <size>803857830</size>
+          <checksum type="md5">a4953126f083ed6c59f9ad6dd082a496</checksum>
+          <duration>6087637</duration>
+          <audio id="audio-1">
+            <device/>
+            <encoder type="AAC (Advanced Audio Coding)"/>
+            <framecount>285358</framecount>
+            <channels>2</channels>
+            <samplingrate>48000</samplingrate>
+            <bitrate>189375.0</bitrate>
+          </audio>
+          <video id="video-1">
+            <device/>
+            <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <framecount>182629</framecount>
+            <bitrate>851449.0</bitrate>
+            <framerate>30.0</framerate>
+            <resolution>1280x720</resolution>
+          </video>
+          <live>false</live>
+          <master>false</master>
+        </track>
+        <track id="f259b114-fa98-40af-8c31-a83ce4b35d27" type="presenter/prepared">
+          <mimetype>video/mp4</mimetype>
+          <tags>
+            <tag>archive</tag>
+            <tag>editor</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/e008225d-8b24-49d9-aa90-1b3691736c4f/Technik_HSD_A_20221216_081637_S1R1.mp4
+          </url>
+          <size>3959568943</size>
+          <checksum type="md5">0d177edd3421c781bf79727247943dfa</checksum>
+          <duration>6087701</duration>
+          <audio id="audio-1">
+            <device/>
+            <encoder type="AAC (Advanced Audio Coding)"/>
+            <framecount>285361</framecount>
+            <channels>2</channels>
+            <samplingrate>48000</samplingrate>
+            <bitrate>189375.0</bitrate>
+          </audio>
+          <video id="video-1">
+            <device/>
+            <encoder type="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"/>
+            <framecount>182626</framecount>
+            <bitrate>4998807.0</bitrate>
+            <framerate>29.999178</framerate>
+            <resolution>1280x720</resolution>
+          </video>
+          <live>false</live>
+          <master>false</master>
+        </track>
+      </media>
+      <attachments>
+        <attachment id="67e913dd-2c9d-4a45-84c1-93a172cbd15b" type="thumbnail/preview"
+                    ref="track:e008225d-8b24-49d9-aa90-1b3691736c4f">
+          <mimetype>image/jpeg</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/3dc6dc67-b0cd-4f3d-b09a-ec5b4b136a22/Technik_HSD_A_20221216_081637_S1R1_1_000s_preview.jpg
+          </url>
+          <size>4622</size>
+        </attachment>
+        <attachment id="7467c16e-0c45-42ac-a8de-1bc5ed754bf4" type="presenter/audio+preview">
+          <mimetype>image/png</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/fed99431-6e83-43b4-8183-0012bcf13f0f/waveform.png
+          </url>
+        </attachment>
+        <attachment id="10d56881-9527-4da8-a7d3-63e3ae29e16a" type="composite/waveform">
+          <mimetype>image/png</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/ee0d0ddd-be86-48c3-90ae-226935e833f6/waveform.png
+          </url>
+        </attachment>
+        <attachment id="64a65e36-4f73-4b7a-92d7-be8cdf985a49" type="presenter/audio+preview">
+          <mimetype>image/png</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/609c9e71-f17f-4714-9690-d1b4a234d6f8/waveform.png
+          </url>
+        </attachment>
+        <attachment id="75cf4116-4471-4dce-8070-5de1ea9b8559" type="presenter/video+preview"
+                    ref="track:e008225d-8b24-49d9-aa90-1b3691736c4f">
+          <mimetype>image/jpeg</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/610384f8-8ac7-4073-8ab4-db99d3502a48/Technik_HSD_A_20221216_081637_S1R1_50_0p_preview.jpg
+          </url>
+          <size>6322</size>
+        </attachment>
+        <attachment id="f779d8a7-4408-4f78-9fe4-d91cad5c44f1" type="presentation/video+preview"
+                    ref="track:1fdecc5a-e4f1-472e-9fac-e63364112dfa">
+          <mimetype>image/jpeg</mimetype>
+          <tags>
+            <tag>preview</tag>
+          </tags>
+          <url>
+            https://opencast.player.io/static/mh_default_org/internal/a163d07d-3241-42b9-831b-ddbb6a092f2b/46721d24-8c4b-4f49-b528-157e073dd66b/Technik_HSD_B_20221216_081637_S1R1_50_0p_preview.jpg
+          </url>
+          <size>11372</size>
+        </attachment>
+      </attachments>
+      <metadata/>
+    </publication>
+    <publication id="ebb41b49-b7f3-4312-9f73-2c8a090b0773" channel="engage-player">
+      <mimetype>text/html</mimetype>
+      <tags>
+        <tag>archive</tag>
+      </tags>
+      <url>
+        https://opencast.player.io/play/a163d07d-3241-42b9-831b-ddbb6a092f2b
+      </url>
+      <media/>
+      <attachments/>
+      <metadata/>
+    </publication>
+  </publications>
+</mediapackage>

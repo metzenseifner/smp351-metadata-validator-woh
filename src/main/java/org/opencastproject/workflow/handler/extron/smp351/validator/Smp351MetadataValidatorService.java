@@ -5,6 +5,7 @@ import org.opencastproject.mediapackage.MediaPackage;
 import org.opencastproject.workflow.api.WorkflowInstance;
 import org.opencastproject.workflow.api.WorkflowOperationInstance;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.*;
+import org.opencastproject.workflow.handler.extron.smp351.validator.utilities.CheapSmp351ProprietaryMetadataReader;
 import org.opencastproject.workflow.handler.extron.smp351.validator.utilities.Utilities;
 import org.opencastproject.workspace.api.Workspace;
 import org.slf4j.Logger;
@@ -60,7 +61,7 @@ public class Smp351MetadataValidatorService {
     Result<WorkflowOperationInstance> rWorkflowOperationInstance =
       rWorkflowInstance.flatMap(Utilities::safeGetCurrentWorkflowOperation);
 
-    /* Proprietary Extron SMP 351 Catalog */
+    /* Proprietary Extron SMP 351 Catalog TODO Improve implementation to uniquely id catalog */
     Result<Catalog> rSmp351Catalog = rMediaPackage.flatMap(Utilities::getListofCatalog).flatMap(ListUtilities::head);
 
     /* Utility Function to access input stream from Workspace safely */
@@ -70,7 +71,8 @@ public class Smp351MetadataValidatorService {
     Result<Map<String, Result<String>>> rMetadata = rSmp351Catalog
       .flatMap(Utilities::getURI)
       .flatMap(URIToInputStream)
-      .map(in -> GsonJsonReader.streamJsonReader(in))
+      //.map(in -> GsonJsonReader.streamJsonReader(in))
+      .map(in -> new CheapSmp351ProprietaryMetadataReader(in))
       .map(jReader -> Utilities.readSmp351Catalog(jReader,
         //TODO Replace me with code that ensure changes propogate
         ListUtilities.list(
@@ -105,7 +107,7 @@ public class Smp351MetadataValidatorService {
   private Result<Map<String, String>> traverseMap(Map<String, Result<String>> map) {
     List<Result<String>> missingValues = map.values().stream().filter(e -> e.isFailure()).collect(Collectors.toUnmodifiableList());
     if (!missingValues.isEmpty()) {
-      return Result.failure(String.format("Failure because some expected values in the SMP metadata were missing"));
+      return Result.failure(String.format("Failure because some expected values in the SMP metadata were missing: %s", missingValues.stream().map(v -> v.failureValue()).collect(Collectors.toUnmodifiableList())));
     }
     Map<String, String> accumulator = Map.empty();
     for (String key : map.keys()) {

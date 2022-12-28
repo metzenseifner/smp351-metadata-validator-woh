@@ -84,12 +84,12 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
     //List<Result<ValidationUnit>> successes = validationResults.stream().filter(result -> result.isSuccess()).collect(Collectors.toUnmodifiableList());
 
     /* Log cases */
-    validationResults.stream().map(Smp351MetadataValidatorWorkflowOperation::validationUnitToLogMessage).forEach(msg -> logger.info(msg));
+    List<String> failureMessages = validationResults.stream().map(Smp351MetadataValidatorWorkflowOperation::validationUnitToLogMessage).collect(Collectors.toUnmodifiableList());
 
     /* Fail workflow if not all results are successes */
     if (!failures.isEmpty()) {
       operation.setState(WorkflowOperationInstance.OperationState.FAILED);
-      throw new WorkflowOperationException("Validation of SMP351 proprietary metadata fields failed.");
+      throw new WorkflowOperationException(String.format("Validation of SMP351 proprietary metadata fields failed: %s", failureMessages));
     }
     operation.setState(WorkflowOperationInstance.OperationState.SUCCEEDED);
     return createResult(WorkflowOperationResult.Action.CONTINUE);

@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: Retire this class. Prefer {@link Smp351MetadataValidatorOperationConfig}.
+ * Proxy to the {@link WorkflowOperationInstance#getConfiguration(String)}.
  *
+ * See {@link this#getSetting(String)}.
+ *
+ * TODO: Refactor or remove this class. Prefer {@link Smp351MetadataValidatorOperationConfig}.
+ * <p>
  * Provides iterable SMP 351 configuration keys.
  */
 public final class Smp351MetadataValidatorConfiguration {
@@ -57,14 +61,6 @@ public final class Smp351MetadataValidatorConfiguration {
    * Return cases:
    * Success: A key is known and the (key,value) pair is returned wrapped in a Result.Success.
    * Failure: A key is unknown and a Result.Failure is returned.
-   * <p>
-   * The (old) algorithm: TODO Delete me
-   * <p>
-   * Identify all "set" settings. Any that are not set will be skipped.
-   * If all are empty, then the operation will be skipped. Any failure will
-   * fail the operation, however, each metadata field wll be validated, even
-   * if one fails so that ample information can be returned to the user for
-   * faster repairs.
    */
   public Result<Tuple<String, String>> getSetting(String key) {
     // TODO: Add file support Result<Map<String, String>> rConfFileProperties = Result.of(this.confFileProperties);

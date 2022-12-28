@@ -5,7 +5,6 @@ import org.opencastproject.mediapackage.MediaPackage;
 import org.opencastproject.mediapackage.MediaPackageElementFlavor;
 import org.opencastproject.workflow.api.WorkflowInstance;
 import org.opencastproject.workflow.api.WorkflowOperationInstance;
-import org.opencastproject.workflow.handler.extron.smp351.validator.functional.GsonJsonReader;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Result;
@@ -69,7 +68,7 @@ public class Utilities {
       try {
         return Result.success(c.getURI());
       } catch (Exception e) {
-        return Result.failure(e);
+        return Result.failure(String.format("%s on catalog: %s", e, catalog));
       }
     });
   }
@@ -78,7 +77,7 @@ public class Utilities {
     try {
       return Result.of(w.read(u));
     } catch (Exception e) {
-      return Result.failure(e);
+      return Result.failure(String.format("%s while trying to map URI to InputStream", e));
     }
   };
 
@@ -90,42 +89,9 @@ public class Utilities {
    * @param smp351MetadataFieldKeys
    * @return
    */
-  public static Map<String, Result<String>> readSmp351Catalog(GsonJsonReader reader, List<String> smp351MetadataFieldKeys) {
-    return ListUtilities.foldLeft(smp351MetadataFieldKeys, new Map(), map -> k -> map.put(k, readSmp351ProprietaryMetadataField(reader, k)));
+  public static Map<String, Result<String>> readSmp351Catalog(CheapSmp351ProprietaryMetadataReader reader, List<String> smp351MetadataFieldKeys) {
+    return ListUtilities.foldLeft(smp351MetadataFieldKeys, new Map(), map -> k -> map.put(k, reader.get(k)));
   }
-
-  /**
-   * Abstracts the proprietary format from caller.
-   *
-   * @param reader                 A JSON reader programmed functional style
-   * @param smp351MetadataFieldKey a field key from the proprietary format e.g. dc:relation
-   * @return
-   */
-  private static Result<String> readSmp351ProprietaryMetadataField(GsonJsonReader reader, String smp351MetadataFieldKey) {
-    return reader.getAsString("package")
-            .map(packageStr -> GsonJsonReader.stringJsonReader(packageStr))
-            .flatMap(packReader -> packReader.getAsString("metadata"))
-            .map(metadataPack -> GsonJsonReader.stringJsonReader(metadataPack))
-            .flatMap(metadataPackReader -> metadataPackReader.getAsString(smp351MetadataFieldKey));
-  }
-
-
-  /* map-based impl */
-  //public static Map<ConfKey, Result<Pattern>>  resolveConfiguration(List<ConfKey> keys, Smp351MetadataValidatorConfiguration configuration) {
-  //  Result<Smp351MetadataValidatorConfiguration> rConfig = Result.of(configuration);
-  //  return ListUtilities.foldLeft(
-  //          Smp351MetadataValidatorConfiguration.confKeys,
-  //          new Map<>(),
-  //          acc -> ckey -> acc.put(ckey, rConfig.flatMap(conf -> conf.getSetting(ckey).map(str -> Pattern.compile(str)))));
-  //}
-  /* list-based impl */
-  //public static List<Tuple<ConfKey, Result<Pattern>>> resolveConfiguration(List<ConfKey> keys, Smp351MetadataValidatorConfiguration configuration) {
-  //  Result<Smp351MetadataValidatorConfiguration> rConfig = Result.of(configuration);
-  //  return ListUtilities.foldLeft(
-  //          Smp351MetadataValidatorConfiguration.confKeys,
-  //          ListUtilities.list(),
-  //          acc -> ckey -> ListUtilities acc.add(new Tuple<>(ckey, rConfig.flatMap(conf -> conf.getSetting(ckey).map(str -> Pattern.compile(str))))));
-  //}
 
   public static <T> Result<T> assertPatternMatches(String pattern, T value, Function<T, String> resolveString) {
     return assertCondition(value, p -> Pattern.matches(pattern, resolveString.apply(value)), String.format("Pattern \"%s\" failed to match value: %s", pattern.toString(), value));

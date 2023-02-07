@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
  * 4. If all assertions succeed, pass operation. Log (conf_key, key_value, smp_value).
  */
 @Component(
+  immediate = true,
+  service = WorkflowOperationHandler.class,
   property = {
     "workflow.operation=smp351metadatavalidator",
     "service.description=SMP 351 Proprietary Metadata Validator Workflow Operation",

@@ -52,3 +52,13 @@ Here is a minimal workflow that demonstrates how this handler can be used:
 
 </definition>
 ```
+
+# Git Setup
+
+From a vanilla Opencast repository:
+
+Go to your local Opencast repository.
+
+Clone this repository as a Git module:
+
+git 

@@ -1,6 +1,7 @@
 package org.opencastproject.workflow.handler.extron.smp351.validator;
 
 import org.opencastproject.job.api.JobContext;
+import org.opencastproject.serviceregistry.api.ServiceRegistry;
 import org.opencastproject.workflow.api.*;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.ListUtilities;
 import org.opencastproject.workflow.handler.extron.smp351.validator.functional.Map;
@@ -9,6 +10,7 @@ import org.opencastproject.workflow.handler.extron.smp351.validator.functional.T
 import org.opencastproject.workspace.api.Workspace;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +33,7 @@ import java.util.stream.Collectors;
   property = {
     "workflow.operation=smp351metadatavalidator",
     "service.description=SMP 351 Proprietary Metadata Validator Workflow Operation",
-    "opencast.service.type=org.opencastproject.workflow.handler.extron.smp351.validator",
+    //"opencast.service.type=org.opencastproject.workflow.handler.extron.smp351.validator",
   }
 )
 public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOperationHandler {
@@ -115,4 +117,12 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
     }
     return rValidationUnit.failureValue().getMessage();
   }
+
+
+  @Reference
+  @Override
+  public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+    super.setServiceRegistry(serviceRegistry);
+  }
+
 }

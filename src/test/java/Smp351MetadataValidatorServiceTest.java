@@ -22,8 +22,8 @@ import java.util.UUID;
 public class Smp351MetadataValidatorServiceTest {
 
   private Smp351MetadataValidatorWorkflowOperation operationHandler;
-  private WorkflowInstanceImpl instance;
-  private WorkflowOperationInstanceImpl operation;
+  private WorkflowInstance instance;
+  private WorkflowOperationInstance operation;
   private MediaPackage mp;
   private Workspace workspace;
 
@@ -62,8 +62,8 @@ public class Smp351MetadataValidatorServiceTest {
       operationHandler = new Smp351MetadataValidatorWorkflowOperation();
 
       // Initialize the workflow
-      instance = new WorkflowInstanceImpl();
-      operation = new WorkflowOperationInstanceImpl("test", WorkflowOperationInstance.OperationState.INSTANTIATED);
+      instance = new WorkflowInstance();
+      operation = new WorkflowOperationInstance("test", WorkflowOperationInstance.OperationState.INSTANTIATED);
       List<WorkflowOperationInstance> ops = new ArrayList<>();
       ops.add(operation);
       instance.setOperations(ops);

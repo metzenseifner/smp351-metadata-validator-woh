@@ -48,5 +48,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: smp351-metadata-validator-woh-13.x.jar
-          path: modules/smp351-metadata-validator-woh/target/opencast-smp351-metadata-validator-13.x.jar
+          name: smp351-metadata-validator-woh-13.4.jar
+          path: modules/smp351-metadata-validator-woh/target/opencast-smp351-metadata-validator-13.4.jar

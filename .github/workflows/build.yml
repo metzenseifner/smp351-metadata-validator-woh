@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - '10.x'
+    - '13.x'
 
 name: Build submodules
 jobs:
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: metzenseifner/opencast
-          ref: 'uibk/10.x' 
+          ref: 'uibk/13.x' 
 
       - name: checkout smp351-metadata-validator-woh code
         uses: actions/checkout@v3
@@ -48,5 +48,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: smp351-metadata-validator-woh-10.2.jar
-          path: modules/smp351-metadata-validator-woh/target/opencast-smp351-metadata-validator-10.2.jar
+          name: smp351-metadata-validator-woh-13.x.jar
+          path: modules/smp351-metadata-validator-woh/target/opencast-smp351-metadata-validator-13.x.jar

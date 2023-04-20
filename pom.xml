@@ -92,6 +92,7 @@
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Build-Number>${buildNumber}</Build-Number>
             <Export-Package>
+              org.opencastproject.workflow.handler.extron.smp351.validator;version=${project.version}
             </Export-Package>
             <Import-Package>
               *

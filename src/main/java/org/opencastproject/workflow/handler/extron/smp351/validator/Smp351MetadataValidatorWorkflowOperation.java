@@ -43,8 +43,9 @@ public class Smp351MetadataValidatorWorkflowOperation extends AbstractWorkflowOp
   private Workspace workspace;
 
   @Modified
-  public void updated(Map<String, String> declarativeServicesProperties) {
-    this.confFileProperties = declarativeServicesProperties;
+  public void updated(java.util.Map<String, String> declarativeServicesProperties) {
+    // combiner is null because we'll never do execute the stream operation in parallel
+    this.confFileProperties = declarativeServicesProperties.entrySet().stream().reduce( Map.empty(), (map, entry) -> map.put(entry.getKey(), entry.getValue()), null);
   }
 
   @Override
